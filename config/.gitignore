@@ -1,0 +1,16 @@
+# git@github.com:kelleysislander/authapi.git
+Gemfile.lock
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+*.tmproj
+# config/database.yml
+public/cache/
+public/system/*
+tmp/restart.txt
+coverage/
+.DS_Store
+public/.DS_Store
+.rvmrc
+public/stylesheets/.DS_Store

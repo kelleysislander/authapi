@@ -58,3 +58,33 @@ production:
   password: Test1234
   host: localhost
 
+# from cascade:
+# development:
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
+#   database: cascade_dev
+#   pool: 5
+#   username: cascade
+#   password: cascade_dev
+#   socket: /tmp/mysql.sock
+# 
+# staging:
+#   adapter: mysql2
+#   encoding: utf8
+#   socket: /var/run/mysqld/mysqld.sock
+#   pool: 5
+#   username: cascade
+#   password: cascadestagingSvGQf650p
+#   database: cascade_staging
+#   host: localhost
+# 
+# production:
+#   adapter: mysql2
+#   encoding: utf8
+#   socket: /var/lib/mysql/mysql.sock
+#   pool: 5
+#   username: root
+#   password: 630#th3rm4l
+#   database: cascade_production
+#   host: localhost
