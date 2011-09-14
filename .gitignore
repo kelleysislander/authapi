@@ -1,4 +1,5 @@
 # git@github.com:kelleysislander/authapi.git
+
 Gemfile.lock
 .bundle
 db/*.sqlite3
