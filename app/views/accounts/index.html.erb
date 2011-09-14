@@ -1,0 +1,26 @@
+<% title "Accounts" %>
+
+<div class="info subcontent">
+  <ul>
+    <% for account in @accounts %>
+      <li>
+        <table>
+          <%=h account.name %>
+
+          <td><%= link_to "Show", account, :class => "button bottom row", :rel => "_ajax" %></td>
+          <% if @current_user.is_admin? account %>
+          <td><%= link_to "Edit", edit_account_path(account), :class => "button bottom row", :rel => "_ajax" %></td>
+          <% end %>
+          <td><%= link_to "Delete", account, :confirm => 'Are you sure?', :method => :delete, :class => "button bottom row"  %></td>
+        </table>
+      </li>
+    <% end %>
+  </ul>
+
+  <p>
+    <% if @current_user.is_admin? %>
+      <%= link_to "New Account", new_account_path, :rel => '_ajax' %>
+    <% end %>
+  </p>
+  <div class ="clear"></div>
+</div>

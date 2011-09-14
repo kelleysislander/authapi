@@ -1,0 +1,13 @@
+<% title "New Authentication Code" %>
+<% back_link account_authentication_codes_path(@account) %>
+
+<% form_for([ @account, @authentication_code ]) do |f| %>
+  <p>
+    <%= f.label :hash_code %><br />
+    <%= f.text_field :hash_code, :value => @authentication_code.hash_code %>
+  </p>
+  <%= f.submit "Submit", :class => 'hiddenSubmit', :style => "display: none;" %>
+<% end %>
+
+<p><%= link_to "Back to List", account_authentication_codes_path(@account), :class => 'button bottom', :rel => "_ajax" %></p>
+<br class="clear" />

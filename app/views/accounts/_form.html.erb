@@ -1,0 +1,58 @@
+<% semantic_form_for @account do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <%- if @current_user.is_admin?(@account) -%>
+  <li class="check_boxes optional" id="accounts_users_input">
+    <fieldset>
+      <legend>
+        <span class="label">Users</span>
+      </legend>
+
+      <ol>
+        <% for user in (@current_user.is_admin? ? User.all : @account.users) %>
+          <li>
+            <p>
+              <%= check_box_tag "account[user_data][#{user.id}][user_id]", user.id, @account.users.include?(user), :id => "account_users_ids_#{user.id}" %>
+              <%= label_tag "account_users_ids_#{user.id}", user.is_admin? ? "*#{user}" : user %>
+              <%= check_box_tag "account[user_data][#{user.id}][admin]", true, (AccountsUser.find_by_account_id_and_user_id(@account.id, user.id).admin rescue nil) %>
+              <%= label_tag "account_user_data_#{user.id}_admin", "Account Admin" %>
+            </p>
+          </li>
+        <% end %>
+      </ol>
+    </fieldset>
+  </li>
+  <%- end -%>
+
+  <% if @current_user.is_admin? %>
+  <li class="check_boxes optional" id="accounts_web_apps_input">
+    <fieldset>
+      <legend>
+        <span class="label">Web Apps</span>
+      </legend>
+
+      <ol>
+        <% for app in WebApp.all %>
+          <li>
+            <p>
+              <%= check_box_tag "account[web_app_data][#{app.id}][web_app_id]", app.id, @account.web_apps.include?(app), :id => "account_web_apps_ids_#{app.id}" %>
+              <%= label_tag "account_web_apps_ids_#{app.id}", app %>
+            </p>
+            <p>
+              <%= label_tag "account_web_apps_expires_on_#{app.id}", "Expires (Year-Month-Day; xxxx-xx-xx)" %>
+              <%= text_field_tag "account[web_app_data][#{app.id}][expires_on]", (AccountsWebApp.find_by_account_id_and_web_app_id(@account.id, app.id).expires_on rescue nil), :class => 'datepicker', :id => "account_web_apps_expires_on_#{app.id}" %>
+            </p>
+          </li>
+        <% end %>
+      </ol>
+    </fieldset>
+  </li>
+  <% end %>
+
+  <p><a class="submit whiteButton">Submit</a></p>
+  <%= f.submit "Submit", :class => 'hiddenSubmit', :style => "display: none;" %>
+<% end %>

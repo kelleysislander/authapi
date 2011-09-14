@@ -1,0 +1,39 @@
+<% title "New User" %>
+
+<% semantic_form_for @user do |f| %>
+  <% unless current_user %>
+    <p>
+      <%= label_tag 'auth_code', 'Authentication Code' %><br />
+      <%= text_field_tag 'auth_code', nil, :size => 30 %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= label_tag 'Username' %><br />
+    <%= f.text_field :username %>
+  </p>
+
+  <p>
+    <%= label_tag 'Email' %><br />
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= label_tag 'Password' %><br />
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= label_tag 'password_confirmation', 'Confirm Password' %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <% if current_user and @current_user.is_admin? %>
+  <p>
+    <%= f.check_box :admin %>
+    <%= label_tag 'user_admin', 'Admin?' %>
+  </p>
+  <% end %>
+
+  <p><a class="submit whiteButton">Submit</a></p>
+<% end -%>

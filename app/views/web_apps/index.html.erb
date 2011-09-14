@@ -1,0 +1,31 @@
+<% title "Web Apps" %>
+
+<div class="info subcontent">
+    <%#*<tr>%>
+      <%#*<th>Name</th>%>
+      <%#*<th>URL</th>%>
+      <%#*<th>Description</th>%>
+    <%#*</tr>%>
+    <ul>
+      <% for web_app in @web_apps %>
+      <li><table>
+          <tr>
+            <td><%=h web_app.name %>
+            <%= auto_link web_app.url %></td>
+          </tr>
+          <tr>
+            <td><%=h web_app.description %></td>
+          </tr>
+          <td>
+            <%= link_to "Show", web_app, :class => "button bottom row", :rel => "_ajax" %>
+            <%= link_to "Edit", edit_web_app_path(web_app), :class => "button bottom row", :rel => "_ajax" %>
+            <%= link_to "Delete", web_app, :confirm => 'Are you sure?', :method => :delete, :class => "button bottom row", :rel => "_ajax" %>
+          </td>
+        </table></li>
+      <% end %>
+    </ul>
+  <p>
+    <%= link_to "New Web App", new_web_app_path, :class => "button bottom row", :rel => "_ajax" %>
+  <div class="clear"></div>
+  </p>
+</div>

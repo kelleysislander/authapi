@@ -1,0 +1,77 @@
+body {
+  background-color: #FFF;
+}
+
+textarea, input[type=text], input[type=password], select {
+    font-size: 18px;
+    padding: 5px 4px 3px 5px;
+    width: 276px;
+}
+
+select { width: 287px !important; }
+p {
+    margin: 15px 0px;
+    text-align: left;
+}
+
+#container {
+  width: 90%;
+  min-width: none;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 0;
+  border: none;
+  margin-top: 20px;
+}
+
+
+.fullsite {
+    margin-right: 50px;
+}
+
+.subcontent {
+    text-align: left;
+}
+
+.bottom{
+    position: relative;
+    display: block;
+    width: auto;
+    float: left;
+    margin: 5px;
+    top: 0;
+}
+
+.bottom a {
+    color: #fff;
+    text-decoration: none;
+}
+
+ul li a.row {
+    float: left;
+    text-align: center;
+    border: none;
+}
+
+.clear {
+    clear: both;
+}
+
+ol {
+    margin-left: 20px;
+}
+
+.button {
+    background: none !important;
+}
+
+.back_button {
+    left: 6px;
+    right: auto;
+    padding: 0;
+    max-width: 55px;
+    border-width: 0 8px 0 14px;
+    -webkit-border-image: url(/images/backButton.png) 0 8 0 14;
+}
+
+.centered { text-align: center; }

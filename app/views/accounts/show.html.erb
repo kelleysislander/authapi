@@ -1,0 +1,40 @@
+<% title "Account" %>
+
+<div class="info subcontent">
+  <p>
+    <strong>Name:</strong>
+    <%=h @account.name %>
+  </p>
+
+  <% if @current_user.is_admin?(@account) %>
+    <p><strong>Users (<%= "#{@account.users.length}" %>):</strong></p>
+  <ul>
+  <% for user in @account.users %>
+    <li>
+      <%= user %>
+    </li>
+  <% end %>
+  </ul>
+  <% end %>
+
+  <p><strong>Web Apps:</strong></p>
+  <ul>
+  <% for app in @account.web_apps %>
+    <li<%= ' class="red"' if app.expired? %>>
+      <%= app %>
+    </li>
+  <% end %>
+  </ul>
+
+  <p>
+    <% if @current_user.is_admin? @account %>
+    <%= link_to "Edit", edit_account_path(@account), :class => "button bottom", :rel => "_ajax" %>
+    <% end %>
+    <%= link_to "Delete", @account, :confirm => 'Are you sure?', :method => :delete, :class => "button bottom" %>
+    <%= link_to "View All", accounts_path, :class => "button bottom", :rel => "_ajax" %>
+    <% if @current_user.is_admin? %>
+    <%= link_to "Authentication Codes", account_authentication_codes_path(@account), :class => 'button bottom', :rel => '_ajax' %>
+    <% end %>
+  </p>
+  <div class="clear"></div>
+</div>

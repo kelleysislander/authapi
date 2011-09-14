@@ -1,0 +1,11 @@
+<% title "Edit Web App" %>
+
+<div class="info subcontent">
+  <%= render :partial => 'form', :rel => "_ajax" %>
+
+  <p>
+    <%= link_to "Show", @web_app, :class => "button bottom row", :rel => "_ajax" %>
+    <%= link_to "View All", web_apps_path, :class => "button bottom row", :rel => "_ajax" %>
+  </p>
+  <div class="clear"></div>
+</div>

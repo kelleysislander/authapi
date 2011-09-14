@@ -1,0 +1,27 @@
+<% title "Dashboard" %>
+
+<div class="info subcontent">
+  <% if @current_user.is_admin? %>
+    <h2>My Accelerate Apps:</h2>
+
+    <ul>
+      <% for app in WebApp.all %>
+        <li><%= link_to app, app.url, :rel => "external" %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <% if @current_user.web_apps.blank? %>
+      <h2>You do not currently have access to any applications.</h2>
+    <% else %>
+      <h2>You have access to these applications:</h2>
+
+      <ul>
+        <% for app in @current_user.web_apps %>
+          <% unless @current_user.latest_expiration_date_for(app) < Date.today %>
+          <li><%= link_to app, app.url, :rel => 'external' %> (expires: <%= @current_user.latest_expiration_date_for app %>)</li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

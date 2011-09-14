@@ -1,0 +1,7 @@
+<% title "Register a new user" %>
+
+<div class="info subcontent">
+  <%- @user.password = @user.password_confirmation = nil -%>
+  <%= error_messages_for :user %>
+  <%= render :partial => 'form', :rel => "_ajax" %>
+</div>

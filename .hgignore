@@ -1,0 +1,9 @@
+\.orig$
+\.orig\..*$
+\.chg\..*$
+\.rej$
+\.conflict\~$
+\.csv$
+\.log$
+sphinx*
+pid$

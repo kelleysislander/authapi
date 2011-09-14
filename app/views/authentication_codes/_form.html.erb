@@ -1,0 +1,9 @@
+<% form_for([ @account, @authentication_code ]) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :hash_code %><br />
+    <%= f.text_field :hash_code, :value => @authentication_code.hash_code %>
+  </p>
+  <p><a class="submit whiteButton">Submit</a></p>
+  <%= f.submit "Submit", :class => 'hiddenSubmit', :style => "display: none;" %>
+<% end %>

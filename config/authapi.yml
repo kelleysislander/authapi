@@ -1,0 +1,8 @@
+development:
+  interviewer: http://localhost:3001
+  influencer: http://localhost:3002
+
+staging:
+  interviewer: http://interviewer.semaphoremobile.com
+  influencer: http://influencer.semaphoremobile.com
+

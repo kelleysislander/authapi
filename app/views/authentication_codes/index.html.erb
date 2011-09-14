@@ -1,0 +1,18 @@
+<% title "#{@authentication_codes.count} Authentication Codes" %>
+
+<div class="info subcontent">
+  <p>Hash Codes (<%= "#{@authentication_codes.length}" %>):</p>
+  <% for authentication_code in @authentication_codes %>
+    <ul>
+      <li><%=h authentication_code.hash_code %></li>
+      <li><%= link_to "Destroy", account_authentication_code_path(@account, authentication_code), :confirm => 'Are you sure?', :method => :delete %></li>
+    </ul>
+  <% end %>
+
+  <ul class="tabnav">
+    <li><%= link_to "Generate", generate_account_authentication_codes_path, :rel => '_ajax' %></li>
+    <li><%= link_to "Destroy All", destroy_all_account_authentication_codes_path, :confirm => 'Are you sure?', :method => :delete %></li>
+    <li><%= link_to "New Authentication Code", new_account_authentication_code_path(@account), :rel => '_ajax' %></li>
+    <li><%= link_to 'Back to Account', @account, :rel => '_ajax' %></li>
+  </ul>
+</div>

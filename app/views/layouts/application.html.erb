@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+    <title><%= h(yield(:title) || "Untitled") %></title>
+    <%= stylesheet_link_tag "/jqtouch/jqtouch.css", "/jqtouch/themes/apple/theme.css", "/stylesheets/mobile.css" %>
+    <%= javascript_include_tag "/javascripts/jquery-1.4.2.min.js", "/jqtouch/jqtouch.js", '/javascripts/html.js' %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div class="current">
+      <%- if show_title? -%>
+      <div class="toolbar">
+        <% if !@content_for_toolbar_button_left.nil? %>
+          <%= yield(:toolbar_button_left) %>
+        <% elsif !hide_back_link? %>
+          <%= link_to "Back", '#', :class => "back" unless current_page?( root_path ) || current_page?( login_path ) || current_page?( dashboard_path ) %>
+        <% end %>
+
+        <h1><%=h yield(:title) %></h1>
+        <% unless @current_user %>
+          <% if controller_name == 'user_sessions' and ['new', 'create'].include?(action_name) %>
+            <%= link_to 'Register', signup_path, :class => 'button', :rel => '_ajax' %>
+          <% else %>
+            <%= link_to 'Login', login_path, :class => "button", :rel => "_ajax" %>
+          <% end %>
+        <% else %>
+          <%= link_to 'Logout', logout_path, :class => "button", :rel => "external" %>
+        <% end %>
+        <%= yield(:toolbar) %>
+      </div>
+      <%- end -%>
+
+      <% unless flash.empty? %>
+        <div class="info">
+        <%- flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <%- end -%>
+        </div>
+      <% end %>
+
+      <%= yield %>
+
+      <%- if show_title? and @current_user -%>
+      <ul class='tabnav'>
+        <li><%= link_to 'Dashboard', dashboard_path, :rel => "_ajax" %></li>
+        <%- if @current_user.is_account_admin? -%>
+          <li><%= link_to 'Accounts', accounts_path, :rel => "_ajax" %></li>
+        <%- end -%>
+        <%- if @current_user.is_admin? -%>
+          <li><%= link_to 'Web Apps', web_apps_path, :rel => "_ajax" %></li>
+          <li><%= link_to 'Users', users_path, :rel => "_ajax" %></li>
+        <%- end -%>
+      </ul>
+      <%- end -%>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,2 @@
+module AuthenticationCodesHelper
+end

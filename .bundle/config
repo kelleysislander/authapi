@@ -1,0 +1,6 @@
+--- 
+#BUNDLE_FROZEN: "1"
+BUNDLE_PATH: /var/www/vhosts/authapi.semaphoremobile.com/shared/bundle
+#BUNDLE_PATH: /usr/local/rvm/gems/ruby-1.9.2-p0@rails2/gems
+BUNDLE_DISABLE_SHARED_GEMS: "1"
+BUNDLE_WITHOUT: ""

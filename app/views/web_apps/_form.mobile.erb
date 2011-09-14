@@ -1,0 +1,16 @@
+<% semantic_form_for @web_app do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :url, 'URL' %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p><a class="submit whiteButton">Submit</a></p>
+<% end %>

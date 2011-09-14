@@ -1,0 +1,12 @@
+<% title "Generate Authentication Codes" %>
+
+<% form_tag do %>
+  <p>
+    <%= label_tag 'quantity' %>
+    <%= text_field_tag 'quantity', 100, :size => 6 %>
+  </p>
+
+  <p>
+    <a class="submit whiteButton">Generate</a>
+  </p>
+<% end %>

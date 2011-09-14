@@ -1,0 +1,23 @@
+<% title "Web App" %>
+
+<div class="info subcontent">
+  <p>
+    <strong>Name:</strong>
+    <%=h @web_app.name %>
+  </p>
+  <p>
+    <strong>Url:</strong>
+    <%=h @web_app.url %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%=h @web_app.description %>
+  </p>
+
+  <p>
+    <%= link_to "Edit", edit_web_app_path(@web_app), :class => "button bottom row", :rel => "_ajax" %>
+    <%= link_to "Delete", @web_app, :confirm => 'Are you sure?', :method => :delete, :class => "button bottom row", :rel => "_ajax" %>
+    <%= link_to "View All", web_apps_path, :class => "button bottom row", :rel => "_ajax" %>
+  </p>
+  <div class="clear"></div>
+ </div>

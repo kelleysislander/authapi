@@ -1,0 +1,26 @@
+<% title "Log In" %>
+
+<% if @epic_failure %>
+  <script type="text/javascript">
+    alert('Invalid login. Please register for an account.');
+  </script>
+<% end %>
+
+<% form_for @user_session do |f| %>
+  <div class="centered">
+    <div style="display: inline-block;">
+      <%= f.error_messages %>
+      <p>
+        <%= f.label :username %><br />
+        <%= f.text_field :username %>
+      </p>
+      <p>
+        <%= f.label :password %><br />
+        <%= f.password_field :password %>
+      </p>
+      <p>
+        <a class="submit whiteButton">Login</a>
+      </p>
+    </div>
+  </div>
+<% end %>
